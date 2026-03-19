@@ -15,33 +15,6 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Custom CSS for a premium look
-st.markdown("""
-    <style>
-    .main {
-        background-color: #f8fafc;
-    }
-    .metric-container {
-        background-color: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        text-align: center;
-        border: 1px solid #e2e8f0;
-    }
-    h1, h2, h3 {
-        font-family: 'Inter', sans-serif;
-    }
-    .stPlotlyChart {
-        background-color: white;
-        border-radius: 12px;
-        padding: 10px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        border: 1px solid #e2e8f0;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 @st.cache_data
 def load_data():
     dataset_path = os.path.join(os.path.dirname(__file__), "dataset.json")
@@ -190,30 +163,15 @@ def main():
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.markdown(f"""
-            <div class="metric-container">
-                <h3 style="color: #64748b; font-size: 0.9rem; text-transform: uppercase;">Total Conversations</h3>
-                <p style="color: #3b82f6; font-size: 2.5rem; font-weight: bold; margin: 0;">{len(df)}</p>
-            </div>
-        """, unsafe_allow_html=True)
+        st.metric(label="Total Conversations", value=len(df))
         
     with col2:
         top_topic = df['topic'].value_counts().idxmax()
-        st.markdown(f"""
-            <div class="metric-container">
-                <h3 style="color: #64748b; font-size: 0.9rem; text-transform: uppercase;">Most Discussed Topic</h3>
-                <p style="color: #3b82f6; font-size: 1.8rem; font-weight: bold; margin: 0;">{top_topic}</p>
-            </div>
-        """, unsafe_allow_html=True)
+        st.metric(label="Most Discussed Topic", value=top_topic)
         
     with col3:
         overall_sentiment = df['sentiment'].value_counts().idxmax()
-        st.markdown(f"""
-            <div class="metric-container">
-                <h3 style="color: #64748b; font-size: 0.9rem; text-transform: uppercase;">Overall Sentiment</h3>
-                <p style="color: #3b82f6; font-size: 1.8rem; font-weight: bold; margin: 0;">{overall_sentiment}</p>
-            </div>
-        """, unsafe_allow_html=True)
+        st.metric(label="Overall Sentiment", value=overall_sentiment)
         
     st.markdown("---")
     
@@ -309,7 +267,7 @@ def main():
             *   [CBS Boston - Local News](https://www.cbsnews.com/boston/local-news/)
             *   [The Enterprise News](https://www.enterprisenews.com/news/brockton/)
     """)
-    st.markdown("<br>", unsafe_allow_html=True)
+
     
     # --- View Raw Data ---
     with st.expander("Explore Raw Dataset"):
