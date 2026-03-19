@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brockton Public Opinion Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-wordcloud@4.3.2"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Brockton Public Opinion Dashboard</h1>
+            <p>Analyzing community concerns and needs with a focus on youth metrics.</p>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <!-- Summary Cards -->
+        <section class="summary-cards">
+            <div class="card stat-card">
+                <h3>Total Conversations</h3>
+                <p id="total-count">...</p>
+            </div>
+            <div class="card stat-card">
+                <h3>Most Discussed Topic</h3>
+                <p id="top-topic">...</p>
+            </div>
+            <div class="card stat-card">
+                <h3>Overall Sentiment</h3>
+                <p id="overall-sentiment">...</p>
+            </div>
+        </section>
+
+        <!-- Charts Grid -->
+        <section class="charts-grid">
+            <div class="card chart-container">
+                <h2>Top Concerns (Topic Frequency)</h2>
+                <canvas id="barChart"></canvas>
+            </div>
+            <div class="card chart-container">
+                <h2>Frequent Keywords</h2>
+                <canvas id="wordCloudChart"></canvas>
+            </div>
+            <div class="card chart-container chart-wide">
+                <h2>Discussion Trends Over Time</h2>
+                <canvas id="lineChart"></canvas>
+            </div>
+            <div class="card chart-container">
+                <h2>Sentiment Breakdown</h2>
+                <canvas id="pieChart"></canvas>
+            </div>
+            <div class="card chart-container">
+                <h2>Data Sources</h2>
+                <canvas id="sourceChart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Data provided for exploratory analysis. (Methodological Demonstration)</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
