@@ -101,7 +101,7 @@ function renderWordCloud(keywordCounts) {
         value: keywordCounts[key] * 10 // scale
     }));
     
-    if (typeof Chart.registry.getChart('wordCloud') === 'undefined' && typeof Chart.controllers.wordCloud === 'undefined') {
+    if (typeof Chart === 'undefined' || typeof Chart.registry === 'undefined' || typeof Chart.registry.getChart === 'undefined' && typeof Chart.controllers.wordCloud === 'undefined') {
         renderFallbackKeywordChart(ctx, words);
         return;
     }
