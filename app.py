@@ -44,7 +44,7 @@ st.markdown("""
 
 @st.cache_data
 def load_data():
-    dataset_path = os.path.join(os.path.dirname(__file__), "website", "dataset.json")
+    dataset_path = os.path.join(os.path.dirname(__file__), "dataset.json")
     try:
         with open(dataset_path, "r", encoding="utf-8") as f:
             data = json.load(f)
