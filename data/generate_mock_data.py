@@ -72,9 +72,8 @@ def generate_mock_dataset(num_records=500):
 
 if __name__ == "__main__":
     data = generate_mock_dataset(600)
-    # Output to website folder so frontend can fetch it easily
-    output_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "website")
-    os.makedirs(output_dir, exist_ok=True)
+    # Output to root folder because frontend was moved
+    output_dir = os.path.dirname(os.path.dirname(__file__))
     output_path = os.path.join(output_dir, "dataset.json")
     
     with open(output_path, "w", encoding="utf-8") as f:
